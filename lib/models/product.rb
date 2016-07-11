@@ -10,6 +10,10 @@ module Shop
       @price = price
     end
 
+    def to_hash
+      {name: name, price: price, id: id }
+    end
+
     private
     def set_id
       @@id += 1

@@ -2,8 +2,8 @@ require_relative './fetch_commodity'
 
 module Shop
   class DeleteCommodityFromWarehouse
-    def call(id, quantity)
-      commodity = FetchCommodity.new.call(id)
+    def call(id, quantity = 1)
+      commodity = FetchCommodity.new().call(id)
 
       return unless commodity
 

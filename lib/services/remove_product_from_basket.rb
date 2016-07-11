@@ -4,7 +4,7 @@ require_relative './add_commodity_to_warehouse'
 
 module Shop
   class RemoveProductFromBasket
-    def call(id, quantity)
+    def call(id, quantity = 1)
       commodity = FindProductInBasket.new().call(id)
       return unless commodity || commodity.quantity < quantity
 
