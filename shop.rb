@@ -1,7 +1,7 @@
 require_relative './lib/models/product'
 require_relative './lib/models/commodity'
 # require_relative './lib/services/fetch_product'
-# require_relative './lib/services/fetch_products'
+require_relative './lib/services/fetch_products'
 require_relative './lib/services/create_warehouse'
 require_relative './lib/services/delete_commodity_from_warehouse'
 require_relative './lib/services/add_commodity_to_warehouse'

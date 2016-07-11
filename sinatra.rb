@@ -10,8 +10,7 @@ end
 
 get "/products" do
   @products = []
-  Shop::PRODUCTS_CATALOGUE.each do |product|
-      # product = Shop::PRODUCTS_CATALOGUE.find{ |product| product.id == commodity.product_id }
+  Shop::PRODUCTS_CATALOGUE.each do |product| #replace with fetch porducts service
       @products << product
   end
     erb :products_index
@@ -33,13 +32,31 @@ get '/basket' do
   erb :basket
 end
 
+get '/warehouse' do
+  @products = []
+  Shop::WAREHOUSE.each do |commodity|
+    @products << Shop::PRODUCTS_CATALOGUE.find{ |product| product.id == commodity.product_id }.to_hash.merge!( { quantity: commodity.quantity } )
+  end
+  @catalogue = Shop::FetchProducts.new().call
+  erb :warehouse
+end
+
+delete '/warehouse' do
+  Shop::DeleteCommodityFromWarehouse.new().call( params['product_id'].to_i )
+  redirect '/warehouse'
+end
+
+post '/warehouse' do
+  Shop::AddCommodityToWarehouse.new().call( params['product_id'].to_i, params['quantity'].to_i )
+  redirect '/warehouse'
+end
+
 post '/basket/add' do
   Shop::AddProductToBasket.new().call( params['product_id'].to_i, params['quantity'].to_i  )
   redirect '/basket'
 end
 
 delete '/basket' do
-  puts params['product_id'].to_i
   Shop::RemoveProductFromBasket.new().call( params['product_id'].to_i )
   redirect '/basket'
 end
