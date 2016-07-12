@@ -3,16 +3,11 @@ require_relative './price_gross'
 require_relative './price_net'
 
 module Shop
-
   class Receipt
-
     def call
-
       receipt = "\n*******************"
       receipt += "\n*BIEDRONKA*"
       receipt += "\n*******************"
-
-
 
       BASKET.each do |commodity|
         product = FetchProduct.new().call(commodity.product_id)

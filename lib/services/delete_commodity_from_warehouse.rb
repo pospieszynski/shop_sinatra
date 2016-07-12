@@ -4,7 +4,7 @@ module Shop
   class DeleteCommodityFromWarehouse
     def call(id, quantity = 1)
       commodity = FetchCommodity.new().call(id)
-
+      puts "COMMODITY" + commodity.inspect
       return unless commodity
 
       reduce_commodity_quantity(commodity, quantity)

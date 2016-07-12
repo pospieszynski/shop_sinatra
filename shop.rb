@@ -1,17 +1,4 @@
-require_relative './lib/models/product'
-require_relative './lib/models/commodity'
-# require_relative './lib/services/fetch_product'
-require_relative './lib/services/fetch_products'
-require_relative './lib/services/create_warehouse'
-require_relative './lib/services/delete_commodity_from_warehouse'
-require_relative './lib/services/add_commodity_to_warehouse'
-require_relative './lib/services/add_product_to_basket'
-require_relative './lib/services/remove_product_from_basket'
-require_relative './lib/services/price_gross'
-require_relative './lib/services/receipt'
-
-
-# require_relative './lib/services/delete_warehouse'
+Dir["./lib/**/*.rb"].each{ |file| require file }
 
 module Shop
 

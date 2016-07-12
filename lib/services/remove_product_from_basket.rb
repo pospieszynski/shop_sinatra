@@ -1,7 +1,6 @@
 require_relative './fetch_commodity'
 require_relative './add_commodity_to_warehouse'
 
-
 module Shop
   class RemoveProductFromBasket
     def call(id, quantity = 1)

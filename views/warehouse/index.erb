@@ -1,0 +1,37 @@
+<h3>Warehouse</h3>
+
+<table border="1">
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price per piece</th>
+    <th>Action</th>
+  </tr>
+
+  <%products.each do |product| %>
+  <tr>
+    <td><%= product[:name] %></td>
+    <td><%= product[:quantity] %></td>
+    <td><%= "%0.2f" %  product[:price] %>  PLN </td>
+    <td>
+      <form action="/warehouse" method="post">
+        <input name="_method" type="hidden" value="delete" />
+        <input type="hidden" name="product_id" value="<%= product[:id] %>">
+        <input type="submit" value="delete">
+      </form>
+    </td>
+  </tr>
+  <% end %>
+
+</table>
+</br>
+
+<form action="/warehouse" method="post" id="product">
+  <select name="product_id" form="product">
+    <%catalogue.each do |product| %>
+        <option value="<%= product.id %>"><%= product.name %></option>
+    <%end%>
+  </select>
+  <input type="number" min="1" step="1" value="1" name="quantity" >
+  <input type="submit" value="Add">
+</form>

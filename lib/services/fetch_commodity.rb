@@ -1,9 +1,7 @@
 module Shop
   class FetchCommodity
     def call(id)
-      WAREHOUSE.find do |commodity|
-        commodity.id == id
-      end
+      WAREHOUSE.find{ |commodity| commodity.product_id == id }
     end
   end
 end
