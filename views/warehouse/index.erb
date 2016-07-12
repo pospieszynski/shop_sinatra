@@ -14,7 +14,7 @@
     <td><%= product[:quantity] %></td>
     <td><%= "%0.2f" %  product[:price] %>  PLN </td>
     <td>
-      <form action="/warehouse" method="post">
+      <form action="/warehouse_remove" method="post">
         <input name="_method" type="hidden" value="delete" />
         <input type="hidden" name="product_id" value="<%= product[:id] %>">
         <input type="submit" value="delete">

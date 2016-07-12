@@ -30,6 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack
   rack-test
   rspec
   sinatra

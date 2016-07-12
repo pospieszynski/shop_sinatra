@@ -1,7 +1,7 @@
 module Shop
   class FetchProduct
-    def call(id)
-      PRODUCTS_CATALOGUE.find{ |product| product.id == id }
+    def call(product_id)
+      PRODUCTS_CATALOGUE.find{ |product| product.id == product_id }
     end
   end
 end

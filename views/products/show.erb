@@ -2,13 +2,13 @@
 <p> ID: <%= product.id %></p>
 <p> <%= product.price %>  PLN</p>
 <% if commodity %>
-  <p> <%= commodity.quantity %>  szt. available on the warehouse</p>
-  <form action="/basket" method="post">
-    <input type="hidden" name="product_id" value="<%= product.id %>">
-    <label for="qt">Quantity: </label>
-    <input type="number" min="1" max="<%= commodity.quantity %>" step="1" value="1" name="quantity" id="qt">
-    <input type="submit" value="Add to basket">
-  </form>
-<%else%>
-  <p>Product not available</p>
-<%end%>
+    <p> <%= commodity.quantity %>  szt. available on the warehouse</p>
+    <form action="/basket" method="post">
+      <input type="hidden" name="product_id" value="<%= product.id %>">
+      <label for="quantity">Quantity: </label>
+      <input type="number" min="1" max="<%= commodity.quantity %>" step="1" value="1" name="quantity" id="quantity">
+      <input type="submit" value="Add to basket">
+    </form>
+<% else %>
+    <p>Product not available</p>
+<% end %>

@@ -4,9 +4,9 @@ require_relative './find_product_in_warehouse_by_id'
 module Shop
   class AddCommodityToWarehouse
     def call(id, quantity = 1)
-      product = FetchProduct.new().call(id)
+      product = FetchProduct.new.call(id)
       return unless product
-      commodity = FindProductInWarehouseById.new().call(id)
+      commodity = FindProductInWarehouseById.new.call(id)
 
       if commodity
         commodity.quantity += quantity
