@@ -76,13 +76,21 @@ module Shop
     end
 
     post '/basket' do
-      AddProductToBasket.new.call(params['product_id'].to_i, params['quantity'].to_i)
-      redirect '/basket'
+      begin
+        AddProductToBasket.new.call(params.fetch('product_id').to_i, params.fetch('quantity').to_i)
+        redirect '/basket'
+      rescue KeyError
+        halt 422
+      end
     end
 
     post '/basket_remove' do
-      RemoveProductFromBasket.new.call(params['product_id'].to_i)
-      redirect '/basket'
+     # begin
+        RemoveProductFromBasket.new.call( params.fetch('product_id').to_i )
+        redirect '/basket'
+     # rescue
+     #   halt 422
+     # end
     end
   end
 end

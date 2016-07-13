@@ -15,7 +15,6 @@
         <td><%= product[:total_gross] %>  PLN</td>
         <td>
           <form action="/basket_remove" method="post">
-            <input name="_method" type="hidden" value="delete"/>
             <input type="hidden" name="product_id" value="<%= product[:id] %>">
             <input type="submit" value="delete">
           </form>

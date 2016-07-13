@@ -7,9 +7,6 @@ module Shop
     def call(id, quantity = 1)
       commodity = FindProductInBasket.new().call(id)
       return unless commodity || commodity.quantity < quantity
-      # puts "*************************"
-      # puts commodity
-      # puts "*************************"
       reduce_commodity_quantity(commodity, quantity)
       AddCommodityToWarehouse.new().call(id, quantity)
     end
