@@ -6,19 +6,19 @@ Dir["./lib/**/*.rb"].each { |file| require file }
 module Shop
 
   PRODUCTS_CATALOGUE = [
-    Product.new('Milk', 2),
-    Product.new('Bread', 3),
-    Product.new('Soap', 4),
-    Product.new('Trousers', 20),
-    Product.new('Pizza', 6),
+      Product.new('Milk', 2),
+      Product.new('Bread', 3),
+      Product.new('Soap', 4),
+      Product.new('Trousers', 20),
+      Product.new('Pizza', 6),
   ]
 
   WAREHOUSE = [
-    Commodity.new(1, 2),
-    Commodity.new(2, 2),
-    Commodity.new(3, 2),
-    Commodity.new(4, 2),
-    Commodity.new(5, 2),
+      Commodity.new(1, 2),
+      Commodity.new(2, 2),
+      Commodity.new(3, 2),
+      Commodity.new(4, 2),
+      Commodity.new(5, 2),
   ]
 
   BASKET = []
@@ -84,12 +84,12 @@ module Shop
     end
 
     post '/basket_remove' do
-     # begin
-        RemoveProductFromBasket.new.call( params.fetch('product_id').to_i )
+      begin
+        RemoveProductFromBasket.new.call(params.fetch('product_id').to_i)
         redirect '/basket'
-     # rescue
-     #   halt 422
-     # end
+      rescue
+        halt 422
+      end
     end
   end
 end
