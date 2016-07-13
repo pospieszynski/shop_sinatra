@@ -1,7 +1,7 @@
 module Shop
   class PriceNet
     def call
-      price = BASKET.reduce(0){ |sum, n| sum += n.quantity * PRODUCTS_CATALOGUE.find { |product| product.id == n.product_id }.price }
+      price = BASKET.reduce(0){ |sum, n| sum += n.quantity * FetchProduct.new.call(n.product_id).price }
       price = convert_to_fload_and_round price
     end
 

@@ -1,5 +1,4 @@
 <h3>Basket</h3>
-
 <table border="1">
   <tr>
     <th>Product</th>
@@ -7,19 +6,18 @@
     <th>Price</th>
     <th>Action</th>
   </tr>
-
   <% products.each do |product| %>
-      <tr>
-        <td><%= product[:name] %></td>
-        <td><%= product[:quantity] %></td>
-        <td><%= product[:total_gross] %>  PLN</td>
-        <td>
-          <form action="/basket_remove" method="post">
-            <input type="hidden" name="product_id" value="<%= product[:id] %>">
-            <input type="submit" value="delete">
-          </form>
-        </td>
-      </tr>
+    <tr>
+      <td><%= product[:name] %></td>
+      <td><%= product[:quantity] %></td>
+      <td><%= product[:total_gross] %>  PLN</td>
+      <td>
+        <form action="/basket_remove" method="post">
+          <input type="hidden" name="product_id" value="<%= product[:id] %>">
+          <input type="submit" value="delete">
+        </form>
+      </td>
+    </tr>
   <% end %>
   <tr>
     <td colspan="4">Total gross: <%= "%0.2f" % gross %>  PLN</td>
@@ -27,5 +25,4 @@
   <tr>
     <td colspan="4">Total net: <%= "%0.2f" % net %>  PLN</td>
   </tr>
-
 </table>
