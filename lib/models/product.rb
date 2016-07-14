@@ -11,7 +11,7 @@ module Shop
     end
 
     def to_hash
-      {name: name, price: price, id: id }
+      {name: name, price: price, id: id}
     end
 
     private
