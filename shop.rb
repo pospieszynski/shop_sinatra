@@ -61,4 +61,3 @@ Shop::RemoveProductFromBasket.new.call(1, 2)
 puts "\nRemoved 2 products of id == 1 from the basket"
 puts "\nBASKET: " + Shop::BASKET.inspect
 puts "\nWAREHOUSE" + Shop::WAREHOUSE.inspect
-
