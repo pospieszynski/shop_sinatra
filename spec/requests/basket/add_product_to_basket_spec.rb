@@ -14,15 +14,11 @@ RSpec.describe "POST /basket", type: :request do
   end
 
   context "valid params" do
-    let(:params) { { "product_id" => 1 }
+    let(:params) { { product_id: 1, quantity: 10 } }
     let(:domain) { "http://example.org" }
 
     before do
       do_request(params)
-    end
-
-    it "redirects" do
-      expect(last_response).to  be_redirect
     end
 
     it "returns 200 HTTP status code" do
@@ -36,11 +32,11 @@ RSpec.describe "POST /basket", type: :request do
     end
   end
 
-  it "calls AddProductToBasket with proper params" do
+  it "calls AddToBasket with proper params" do
     params =  { "product_id" => "1", "quantity" => "10" }
-
-    expect(Shop::AddProductToBasket).to receive(:new).and_call_original
-
+    add_prod_to_basket = Shop::AddProductToBasket.new
+    expect(Shop::AddProductToBasket).to receive(:new).and_return add_prod_to_basket
+    expect(add_prod_to_basket).to receive(:call).with(1, 10).and_call_original
     do_request(params)
   end
 

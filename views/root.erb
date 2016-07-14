@@ -1,1 +1,16 @@
 
+<% unless session[:user].empty? %>
+  <form action="/sign_up" method="POST">
+    Name:<br>
+    <input type="text" name="name"><br>
+    Email:<br>
+    <input type="text" name="email"><br>
+    Password:<br>
+    <input type="password" name="password"><br>
+    <input type="radio" name="role" value="warehouse_supplier"> Warehouse supplier
+    <input type="radio" name="role" value="customer"> Customer
+    <input type="submit" value="Sign up">
+  </form>
+<% end %>
+
+

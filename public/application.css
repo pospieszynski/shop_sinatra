@@ -1,3 +1,20 @@
 body{
-    background-color: red;
+    background-color: 3BC372;
+}
+
+.container{
+    height: 100%
+    margin: 20px;
+}
+.header{
+
+}
+
+.navbar{
+
+}
+
+.content{
+    background-color: white;
+
 }

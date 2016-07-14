@@ -23,6 +23,8 @@ module Shop
 
   BASKET = []
 
+  USERS = []
+
   class App < Sinatra::Base
     get "/" do
       erb :root
@@ -90,6 +92,11 @@ module Shop
       rescue
         halt 422
       end
+    end
+
+    post '/sign_up' do
+      session[:user] =  AddUser.new(params).call
+      redirect '/', locals: {session: session}
     end
   end
 end
