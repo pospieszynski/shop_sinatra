@@ -3,7 +3,7 @@ module Shop
     attr_reader :id, :product_id
     attr_accessor :quantity
 
-    @@id_max = 0
+    @@current_id = 0
 
     def initialize(product_id, quantity)
       arguments_validation(product_id, quantity)
@@ -14,7 +14,7 @@ module Shop
 
     private
     def set_id
-      @@id_max += 1
+      @@current_id += 1
     end
 
     def arguments_validation product_id, quantity

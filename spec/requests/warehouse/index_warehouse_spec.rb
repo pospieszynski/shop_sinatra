@@ -1,7 +1,6 @@
 require "web_helper"
 
 RSpec.describe "GET /warehouse", type: :request do
-
   before do
     do_request
   end

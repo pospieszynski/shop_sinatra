@@ -1,7 +1,6 @@
 require_relative "../../../sinatra_app"
 
 RSpec.describe Shop::AddCommodityToWarehouse do
-
   let(:commodity_to_warehouse_adder) { Shop::AddCommodityToWarehouse.new }
 
   context "#proper params" do

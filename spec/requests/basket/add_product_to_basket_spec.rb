@@ -1,7 +1,6 @@
 require "web_helper"
 
 RSpec.describe "POST /basket", type: :request do
-
   context "invalid params" do
     let(:invalid_params) { { foo: 'bar' } }
 

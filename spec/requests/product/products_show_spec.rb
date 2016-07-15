@@ -1,7 +1,6 @@
 require "web_helper"
 
 RSpec.describe "GET /products/:id", type: :request do
-
   context "without existing product" do
     before do
       do_request(100)

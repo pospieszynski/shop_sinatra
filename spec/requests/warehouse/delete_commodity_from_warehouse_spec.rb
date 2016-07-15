@@ -41,9 +41,7 @@ RSpec.describe "POST /warehouse_remove", type: :request do
     end
   end
 
-
   private
-
   def do_request(params={})
     post '/warehouse_remove', params
   end

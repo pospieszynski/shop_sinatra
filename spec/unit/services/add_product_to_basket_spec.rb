@@ -2,11 +2,9 @@ require_relative "../../../lib/services/add_product_to_basket"
 require_relative "../../../sinatra_app"
 
 RSpec.describe Shop::AddProductToBasket do
-
   let(:commodity_to_basket_adder) { Shop::AddProductToBasket.new }
 
   context "#proper params" do
-
     before do
       Shop::BASKET.clear
       Shop::CreateWarehouse.new.call

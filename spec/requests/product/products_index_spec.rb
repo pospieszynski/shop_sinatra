@@ -1,7 +1,6 @@
 require "web_helper"
 
 RSpec.describe "GET /products", type: :request do
-
   context "proper view" do
     let(:products) { Shop::FetchProducts.new.call }
 

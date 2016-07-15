@@ -5,8 +5,7 @@ module Shop
   class RemoveProductFromBasket
     def call(id, quantity = 1)
       commodity = FindProductInBasket.new().call(id)
-      return unless commodity
-      return unless commodity.quantity >= quantity
+      return unless commodity || commodity.quantity < quantity
       reduce_commodity_quantity(commodity, quantity)
       AddCommodityToWarehouse.new().call(id, quantity)
     end
