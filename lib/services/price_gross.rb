@@ -7,4 +7,3 @@ module Shop
     end
   end
 end
-vk

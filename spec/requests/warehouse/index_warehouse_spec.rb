@@ -15,7 +15,7 @@ RSpec.describe "GET /warehouse", type: :request do
   end
 
   it "Displays table of products" do
-    expect(last_response.body).to include()
+    expect(last_response.body).to include() #todo
   end
 
   private

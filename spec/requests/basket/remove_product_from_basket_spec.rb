@@ -29,7 +29,7 @@ RSpec.describe "POST /basket_remove", type: :request do
 
     it "redirects to BASKET" do
       follow_redirect!
-      expect(last_request.url). to eql(domain + "/basket")
+      expect(last_request.url).to eql(domain + "/basket")
     end
 
     it "calls Remove Product From Basket with proper params" do
@@ -41,9 +41,7 @@ RSpec.describe "POST /basket_remove", type: :request do
     end
   end
 
-
   private
-
   def do_request(params={})
     post '/basket_remove', params
   end

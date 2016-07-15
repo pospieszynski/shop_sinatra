@@ -23,8 +23,6 @@ module Shop
 
   BASKET = []
 
-  USERS = []
-
   class App < Sinatra::Base
     get "/" do
       erb :root
@@ -38,6 +36,7 @@ module Shop
     get '/products/:id' do
       commodity = WAREHOUSE.find { |commodity| commodity.product_id == params['id'].to_i }
       product = PRODUCTS_CATALOGUE.find { |product_el| product_el.id == params['id'].to_i }
+      halt 404 unless product
       erb :"products/show", locals: {commodity: commodity, product: product}
     end
 
@@ -67,8 +66,12 @@ module Shop
     end
 
     post '/warehouse_remove' do
-      DeleteCommodityFromWarehouse.new.call(params['product_id'].to_i)
-      redirect '/warehouse'
+      begin
+        DeleteCommodityFromWarehouse.new.call(params.fetch('product_id').to_i)
+        redirect '/warehouse'
+      rescue KeyError
+        halt 422
+      end
     end
 
     post '/warehouse' do
@@ -96,11 +99,6 @@ module Shop
       rescue
         halt 422
       end
-    end
-
-    post '/sign_up' do
-      session[:user] = AddUser.new(params).call
-      redirect '/', locals: {session: session}
     end
   end
 end
