@@ -2,7 +2,7 @@ require "web_helper"
 
 RSpec.describe "POST /basket_remove", type: :request do
   context "invalid params" do
-    let(:invalid_params) { {foo: 'bar'} }
+    let(:invalid_params) { { foo: 'bar' } }
 
     before do
       do_request(invalid_params)
@@ -14,7 +14,7 @@ RSpec.describe "POST /basket_remove", type: :request do
   end
 
   context "valid params" do
-    let(:params) { {"product_id" => 1, "quantity" => 1} }
+    let(:params) { { "product_id" => 1, "quantity" => 1 } }
     let(:domain) { "http://example.org" }
 
     before do

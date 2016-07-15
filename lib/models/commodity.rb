@@ -6,7 +6,7 @@ module Shop
     @@id_max = 0
 
     def initialize(product_id, quantity)
-      arguments_validation( product_id, quantity)
+      arguments_validation(product_id, quantity)
       @id = set_id
       @product_id = product_id
       @quantity = quantity

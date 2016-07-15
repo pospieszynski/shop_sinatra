@@ -10,7 +10,7 @@ RSpec.describe Shop::FindProductInBasket do
   end
 
   describe "#call" do
-    let(:commodity) { Shop::BASKET[0]  }
+    let(:commodity) { Shop::BASKET[0] }
 
     it "returns all products" do
       Shop::AddProductToBasket.new.call(1, 2)

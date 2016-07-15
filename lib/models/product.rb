@@ -5,14 +5,14 @@ module Shop
     @@id = 0
 
     def initialize(name, price)
-      arguments_validation( name, price )
+      arguments_validation(name, price)
       @id = set_id
       @name = name
       @price = price
     end
 
     def to_hash
-      {name: name, price: price, id: id}
+      { name: name, price: price, id: id }
     end
 
     private

@@ -28,12 +28,12 @@ RSpec.describe "POST /warehouse", type: :request do
 
     it "redirect to WAREHOUSE" do
       follow_redirect!
-      expect(last_request.url). to eql(domain + "/warehouse")
+      expect(last_request.url).to eql(domain + "/warehouse")
     end
   end
 
   it "calls AddToBasket with proper params" do
-    params =  { "product_id" => "1", "quantity" => "10" }
+    params = { "product_id" => "1", "quantity" => "10" }
     add_com_to_warehouse = Shop::AddCommodityToWarehouse.new
     expect(Shop::AddCommodityToWarehouse).to receive(:new).and_return add_com_to_warehouse
     expect(add_com_to_warehouse).to receive(:call).with(1, 10).and_call_original

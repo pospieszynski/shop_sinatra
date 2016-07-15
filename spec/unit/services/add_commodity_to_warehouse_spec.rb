@@ -9,12 +9,12 @@ RSpec.describe Shop::AddCommodityToWarehouse do
       Shop::CreateWarehouse.new.call
     end
     it "increases quantity no. of product already existing in a warehouse" do
-      expect{ commodity_to_warehouse_adder.call(1, 10) }.to change { Shop::WAREHOUSE[0].quantity }.by(10)
+      expect { commodity_to_warehouse_adder.call(1, 10) }.to change { Shop::WAREHOUSE[0].quantity }.by(10)
     end
 
     it "adds commodity instance to warehouse array if there is no commodity with a given product id" do
       Shop::WAREHOUSE.clear
-      expect{ commodity_to_warehouse_adder.call(1, 10) }.to change { Shop::WAREHOUSE.size}.from(0).to(1)
+      expect { commodity_to_warehouse_adder.call(1, 10) }.to change { Shop::WAREHOUSE.size }.from(0).to(1)
     end
   end
 

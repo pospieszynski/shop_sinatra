@@ -13,12 +13,12 @@ RSpec.describe Shop::RemoveProductFromBasket do
 
     it "descreases quantity no. of product already existing in a warehouse" do
       Shop::AddProductToBasket.new.call(1, 2)
-      expect{ commodity_from_basket_remover.call(1, 1) }.to change { Shop::BASKET[0].quantity }.by(-1)
+      expect { commodity_from_basket_remover.call(1, 1) }.to change { Shop::BASKET[0].quantity }.by(-1)
     end
 
     it "removes entirely commodity instance from warehouse array if requested quantity >= real quantity " do
       Shop::AddProductToBasket.new.call(4, 2)
-      expect{ commodity_from_basket_remover.call(4, 2) }.to change { Shop::BASKET.size}.from(1).to(0)
+      expect { commodity_from_basket_remover.call(4, 2) }.to change { Shop::BASKET.size }.from(1).to(0)
     end
   end
 

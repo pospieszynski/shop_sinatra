@@ -15,7 +15,7 @@ RSpec.describe "GET /products", type: :request do
 
     it "displays all products" do
       products.each do |product|
-          expect(last_response.body).to include("<a href=\"/products/#{product.id }\"> #{product.name }</a>")
+        expect(last_response.body).to include("<a href=\"/products/#{product.id }\"> #{product.name }</a>")
       end
     end
 
