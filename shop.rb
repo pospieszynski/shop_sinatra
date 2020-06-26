@@ -1,7 +1,6 @@
 Dir["./lib/**/*.rb"].each { |file| require file }
 
 module Shop
-
   PRODUCTS_CATALOGUE = [
     Product.new('Milk', 2),
     Product.new('Bread', 3),
@@ -44,21 +43,16 @@ puts "\nEMPTY BASKET: " + Shop::BASKET.inspect
 Shop::AddProductToBasket.new.call(1, 2)
 puts "\nAdded 2 products of id == 1 to the basket"
 puts "Total brutto = " + Shop::PriceGross.new.call.to_s
-
 puts ""
 puts ""
-
 puts "\nBASKET: " + Shop::BASKET.inspect
 puts ""
 puts ""
-
 puts Shop::Receipt.new.call()
 puts ""
 puts ""
-
 puts "\nWAREHOUSE" + Shop::WAREHOUSE.inspect
 Shop::RemoveProductFromBasket.new.call(1, 2)
 puts "\nRemoved 2 products of id == 1 from the basket"
 puts "\nBASKET: " + Shop::BASKET.inspect
 puts "\nWAREHOUSE" + Shop::WAREHOUSE.inspect
-

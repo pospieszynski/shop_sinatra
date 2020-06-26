@@ -1,6 +1,6 @@
 require "web_helper"
 
-RSpec.describe "POST /basket", type: :request do
+RSpec.describe "POST /warehouse", type: :request do
   context "invalid params" do
     let(:invalid_params) { { foo: 'bar' } }
 
@@ -26,22 +26,22 @@ RSpec.describe "POST /basket", type: :request do
       expect(last_response.status).to eql(200)
     end
 
-    it "redirect to BASKET" do
+    it "redirect to WAREHOUSE" do
       follow_redirect!
-      expect(last_request.url).to eql(domain + "/basket")
+      expect(last_request.url).to eql(domain + "/warehouse")
     end
   end
 
   it "calls AddToBasket with proper params" do
     params = { "product_id" => "1", "quantity" => "10" }
-    add_prod_to_basket = Shop::AddProductToBasket.new
-    expect(Shop::AddProductToBasket).to receive(:new).and_return add_prod_to_basket
-    expect(add_prod_to_basket).to receive(:call).with(1, 10).and_call_original
+    add_com_to_warehouse = Shop::AddCommodityToWarehouse.new
+    expect(Shop::AddCommodityToWarehouse).to receive(:new).and_return add_com_to_warehouse
+    expect(add_com_to_warehouse).to receive(:call).with(1, 10).and_call_original
     do_request(params)
   end
 
   private
   def do_request(params={})
-    post "/basket", params
+    post "/warehouse", params
   end
 end

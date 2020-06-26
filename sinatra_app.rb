@@ -30,13 +30,14 @@ module Shop
 
     get "/products" do
       products = FetchProducts.new.call
-      erb :"products/index", locals: {products: products}
+      erb :"products/index", locals: { products: products }
     end
 
     get '/products/:id' do
       commodity = WAREHOUSE.find { |commodity| commodity.product_id == params['id'].to_i }
       product = PRODUCTS_CATALOGUE.find { |product_el| product_el.id == params['id'].to_i }
-      erb :"products/show", locals: {commodity: commodity, product: product}
+      halt 404 unless product
+      erb :"products/show", locals: { commodity: commodity, product: product }
     end
 
     get '/basket' do
@@ -44,12 +45,12 @@ module Shop
       BASKET.each do |commodity|
         product = PRODUCTS_CATALOGUE.find { |product| product.id == commodity.product_id }
         product = product.to_hash
-        product.merge!({quantity: commodity.quantity, total_gross: TotalGross.new(product[:price], commodity.quantity).value_format})
+        product.merge!({ quantity: commodity.quantity, total_gross: TotalGross.new(product[:price], commodity.quantity).value_format })
         products << product
       end
       gross = PriceGross.new.call
       net = PriceNet.new.call
-      erb :"basket/index", locals: {gross: gross, net: net, products: products}
+      erb :"basket/index", locals: { gross: gross, net: net, products: products }
     end
 
     get '/warehouse' do
@@ -57,21 +58,29 @@ module Shop
       WAREHOUSE.each do |commodity|
         product = PRODUCTS_CATALOGUE.find { |product| product.id == commodity.product_id }
         product = product.to_hash
-        product.merge!({quantity: commodity.quantity})
+        product.merge!({ quantity: commodity.quantity })
         products << product
       end
       catalogue = FetchProducts.new.call
-      erb :"warehouse/index", locals: {catalogue: catalogue, products: products}
+      erb :"warehouse/index", locals: { catalogue: catalogue, products: products }
     end
 
     post '/warehouse_remove' do
-      DeleteCommodityFromWarehouse.new.call(params['product_id'].to_i)
-      redirect '/warehouse'
+      begin
+        DeleteCommodityFromWarehouse.new.call(params.fetch('product_id').to_i)
+        redirect '/warehouse'
+      rescue KeyError
+        halt 422
+      end
     end
 
     post '/warehouse' do
-      AddCommodityToWarehouse.new.call(params['product_id'].to_i, params['quantity'].to_i)
-      redirect '/warehouse'
+      begin
+        AddCommodityToWarehouse.new.call(params.fetch('product_id').to_i, params.fetch('quantity').to_i)
+        redirect '/warehouse'
+      rescue KeyError
+        halt 422
+      end
     end
 
     post '/basket' do

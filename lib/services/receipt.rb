@@ -14,8 +14,8 @@ module Shop
         receipt += "\n #{product.name} -- #{commodity.quantity} szt.---  #{product.price * commodity.quantity} PLN\n"
       end
       receipt += "\n*******************"
-      receipt += "\nTotal brutto --> #{Shop::PriceGross.new.call.to_s} PLN \n"
-      receipt += "\nTotal netto --> #{Shop::PriceNet.new.call.to_s} PLN\n"
+      receipt += "\nTotal gross --> #{Shop::PriceGross.new.call.to_s} PLN \n"
+      receipt += "\nTotal net --> #{Shop::PriceNet.new.call.to_s } PLN\n"
       receipt += "\n===================\n\n"
       receipt += "\nThank you for shopping, see you soon!"
       receipt

@@ -1,13 +1,21 @@
 <html>
   <head>
     <title>Biedronka</title>
-    <link rel="stylesheet" type="text/css" href="/application.css" />
+    <link rel="stylesheet" type="text/css" href="/application.css"/>
   </head>
   <body>
-    <h1>Biedronka</h1>
-    <h4><i>Low prices everyday!</i></h4>
-    <a href="/">HOME</a> | <a href="/basket">BASKET</a> | <a href="/products">PRODUCTS</a> |
-    <a href="/warehouse">WAREHOUSE</a><br>
-    <%= yield %>
+    <div class="container">
+      <div class="header">
+        <h1>Biedronka</h1>
+        <h4><i>Low prices everyday!</i></h4>
+      </div>
+      <div class="navbar">
+        <a href="/">HOME</a> | <a href="/basket">BASKET</a> | <a href="/products">PRODUCTS</a> |
+        <a href="/warehouse">WAREHOUSE</a><br>
+      </div>
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
